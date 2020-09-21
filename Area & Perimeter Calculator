@@ -1,0 +1,179 @@
+#include<stdlib.h>
+#include <stdio.h>
+#include<unistd.h>
+#include<math.h>
+#include<strings.h>
+#include<string.h>
+
+
+
+/* floats for rectangle section */
+float length;
+float width;
+float perimeter;
+float area;
+
+/*floats for triangle section*/
+float tbase;
+float theight;
+float tarea;
+
+/* floats for circle section*/
+float cangle;
+float cradius;
+float carea;
+float clength;
+
+/* names for shapes*/
+char name[101];
+char tname[101];
+char cname[101];
+
+/*sectioning on if statement*/
+char shape[15];
+char shape1[14] = "triangle";
+char shape2[14] = "rectangle";
+char shape3[14] = "circle";
+
+/*maths behind*/
+char maths[3] = "yes";
+char mathb[3];
+
+int main(void) {
+  
+  printf("Hello!\n");
+  sleep(2);
+  printf("Hello?\n");
+  sleep(1);
+  printf("Oh, there you are! We'll get right into it, shall we? \n");
+  sleep(1);
+  printf("I can solve problems regarding various shapes, like rectangles and circles! I can; \n");
+  sleep(1);
+  printf(" - Work out area and perimeter of a rectangle, \n");
+  sleep(1);
+  printf(" - Find the area of a triangle, \n");
+  sleep(1);
+  printf(" - Calculate the area of  sector and length of an arc of a circle! \n");
+  sleep(1);
+  printf("I must warn you that I work in cm, degrees, and to 6 decimal places. \n Ok? Let's begin!\n");
+  printf("What shape do you want to work out; rectangle, triangle, or circle?\n");
+  scanf("%14s", shape);
+/*Triangle section*/
+  if (strcmp(shape, shape1) == 0){system("clear");
+   printf("Firstly, what's the width of the base of the triangle? \n");
+  scanf("%10f", &tbase);
+  printf("Thanks, and the perpendicular height of the triangle?\n");
+  scanf("%10f", &theight);
+  printf("Great, and what is this triangle's name? \n");
+  scanf("%100s", tname);
+  printf("Lovely! Now, give me just a moment...\n");
+  sleep(1);
+  tarea= 0.5 * tbase * theight;
+  printf("%s 's area is %f cm^2! \n", tname, tarea);
+  sleep(1);
+  printf("Do you want to go through the maths behind these answers?\n");
+  scanf("%3s", mathb);
+    if(strcmp(mathb, maths)==0){printf("Ok, let's go! \n");
+    printf("To calculate the area of a triangle, you need to know the width of the base and the perpendicular height of the triangle.\n From this, we use them to multiply them as below; \n \n");
+    sleep(5);
+    printf("area = 1/2 * base * perpendicular height. \n \n");
+    sleep(3);
+    printf("Why the 1/2? Without it, the formula is equivalent to the area of a rectangle. As triangles can be made from halving a rectangle diagonally, halving the result of the multiplication of base * height gives the area of a triangle. \n");
+    /*Image of triangle*/
+    printf("    ^         ^\n");
+    printf("   / \\        |\n");
+    printf("  /   \\     height\n");
+    printf(" /     \\      |\n");
+    printf(" -------      \\/  <--base-->\n");
+
+
+
+    sleep(2);
+    printf("Thanks for playing, come back soon. Bye! \n");
+    exit(0);
+    }
+    
+    else{printf("Oh, ok. Thanks for playing, come back soon. Bye!");
+    exit(0);
+    }
+   }
+  /*Rectangle section*/
+  else if (strcmp(shape, shape2) == 0){system("clear");
+  printf("Firstly, what is the length of your rectangle?\n");
+  scanf("%10f", &length);
+  printf("Great! Now, what's the width?\n");
+  scanf("%10f", &width);
+  printf("Brilliant! Lastly, what is the name of your rectangle? ...Every shape has a name!\n");
+  scanf("%100s", name);
+  printf("What a lovely name! I will be right back... \n");
+  area = length * width;
+  perimeter = (2* length) + (2*width);
+  printf("The rectangle %s has area %f cm^2 and perimeter %f cm!\n", name, area, perimeter);
+  sleep(1);
+  printf("Do you want to go through the maths behind these answers?\n");
+  scanf("%3s", mathb);
+    if(strcmp(mathb, maths)==0){printf("Ok, let's go! \n");
+    printf("When calculating perimeter in general, you can imagine it's like youre checking to see how far it is to walk all the way round the shape. So, starting from any point of a rectangle, you would have to walk through 2 widths and 2 lengths to get round the whole shape. \n \n");
+    sleep(5);
+    printf("When you want to know the area (the amount of space the shape takes up in the world), you need to multiply the length by the width. \n \n");
+    sleep(5);
+    printf("To clarify; \n perimeter = 2 * (length + width), \n area = length * width. \n \n");
+    printf("/\\      -------- \n");
+    printf(" |      |       | \n");
+    printf("height  |       | \n");
+    printf(" |      |       | \n");
+    printf("\\/      -------- \n");
+    printf("       <--base--> \n");
+    sleep(2);
+    printf("If you ever need another area or perimeter calculating, just let me know, bye!! \n ");
+    exit(0);
+    }
+    /*add rectangle shape*/
+
+  else{printf("Oh, ok. If you ever need another area or perimeter calculating, just let me know, bye!! \n ");
+  exit(0);
+  }
+  }
+  
+  /*Circle section*/
+ else if (strcmp(shape, shape3) == 0){system("clear");
+ printf("First of all, what is the angle of the sector of the circle?\n");
+  scanf("%10f", &cangle);
+  printf("Next, the radius of the circle? \n");
+  scanf("%10f", &cradius);
+  printf("Thanks, and finally the name for your circle sector? \n");
+  scanf("%100s", cname);
+  printf("Perfect! Just give me a moment to think... \n");
+  sleep(1);
+  carea = cradius * cradius * (cangle / 360) * M_PI;
+  clength = (cangle/360) * 2 * M_PI * cradius;
+  printf("The sector %s has arc length %f cm and area %f cm^2! \n", cname, clength, carea);
+  sleep(1);
+  printf("Do you want to go through the maths behind these answers?\n");
+  scanf("%3s", mathb);
+    if(strcmp(mathb, maths)==0){printf("Ok, let's go! \n");
+    printf("To calculate the area and perimeter length of a full circle, you use the below formulae; \n \n");
+    sleep(3);
+    printf("area = pi * radius^2, \n perimeter = 2 * pi * radius. \n \n");
+    sleep(3);
+    printf("As a sector is a portion of a circle, we just need to work out the percentage of the circle that the sector is. To do this, we take the angle of the sector (below called @) and divide it by 360, a full circle. \n");
+    sleep(2);
+    printf("Then the formulae for area and length of a arc of the sector become; \n \n");
+    sleep(2);
+    printf("sector area = (@ /360) * 2 * pi * radius^2 \n arc length = (@/360) * 2 * pi * radius. \n");
+    sleep(2);
+    printf("If there are any more problems you need solving, you know where I am! Byee!! \n");
+    exit(0);
+    }
+    /*Add drawing of circle*/
+    else{printf("Ok, if there are any more problems you need solving, you know where I am! Byee!! \n");
+    exit(0);
+    } 
+  }
+  /*Not recognised entry*/
+  else{printf("Hmm...I'm not sure about that. If you need me, I'll always be here. See you soon!");
+  exit(0);
+  };
+  
+  return 0;
+} 
